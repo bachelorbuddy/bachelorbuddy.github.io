@@ -33,9 +33,9 @@
   </head>
   <body>
     <div id="tsparticles"></div>
-    <div class="wrapper bg-black h-screen text-white">
+    <div class="wrapper bg-black min-h-screen text-white">
       <header class="z-100">
-        <div class="navbar bg-black text-white">
+        <div class="navbar bg-black text-white bg-black">
           <div class="navbar-start">
             <div class="dropdown">
               <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -56,7 +56,7 @@
               </div>
               <ul
                 tabindex="0"
-                class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+                class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 bg-black"
               >
                 <li class="active"><a href="/" >Home</a></li>
                 <li><a href="./team.html">Team</a></li>
@@ -78,9 +78,9 @@
         </div>
       </header>
         <hr />
-      <section class="flex flex-col mx-10 justify-center items-center h-[80vh]">
-        <h1 class="text-5xl my-8 font-bold">Welcome to BachelorBuddy!</h1>
-        <p class="mx-40 text-center">
+      <section class="flex flex-col  md:mx-10 justify-center items-center h-[80vh]">
+        <h1 class=" text-xl md:text-5xl my-8 font-bold">Welcome to BachelorBuddy!</h1>
+        <p class=" mx-5 md:mx-40 text-center">
           BachelorBuddy is a great app for bachelors and managers to keep track
           of meals and bazar. Download the app now and enjoy the convenience it
           brings to your daily routine!
@@ -89,6 +89,12 @@
         <a class="my-8 btn" href="bachelorbuddy.apk" id="downloadButton" download
           >Download BachelorBuddy App <i class="fa fa-download"></i></a
         >
+        <div class="flex flex-col justify-center items-center">
+          <img class="w-40 mb-5 border-2" src="./images/qr.png" alt="">
+          <p>Scan to download in your phone</p>
+          <p>OR</p>
+          <p>Click on the download button</p>
+        </div>
       </section>
     </div>
     <script>
