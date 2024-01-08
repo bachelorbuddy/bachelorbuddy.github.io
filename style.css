@@ -1,0 +1,7 @@
+#tsparticles > canvas{
+    background-color: transparent !important;
+}
+.active{
+    border-radius: 10px;
+    border: 1px solid white !important;
+}
