@@ -78,6 +78,7 @@
               class="btn btn-outline text-white"
               href="bachelorbuddy.apk"
               download
+              onclick="handleDownload()"
               >Get App <i class="fa fa-download"></i
             ></a>
           </div>
@@ -149,6 +150,16 @@
     </div>
 
     <script>
+      async function handleDownload() {
+        let value = await fetch("https://bachelor-buddy.vercel.app/downloads", {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(),
+        });
+      }
+
       var particles = [
         "confetti",
         "snow",
