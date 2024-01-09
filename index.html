@@ -28,7 +28,7 @@
 
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body onload="fetchCount()">
     <div id="tsparticles"></div>
     <div class="wrapper bg-black min-h-screen text-white">
       <header class="z-100">
@@ -55,7 +55,7 @@
                 tabindex="0"
                 class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 bg-black"
               >
-                <li class="active"><a href="/" >Home</a></li>
+                <li class="active"><a href="/">Home</a></li>
                 <li><a href="./team.html">Team</a></li>
               </ul>
             </div>
@@ -64,38 +64,78 @@
           <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
               <li class="active"><a href="/">Home</a></li>
-                <li><a href="./team.html">Team</a></li>
+              <li><a href="./team.html">Team</a></li>
             </ul>
           </div>
           <div class="navbar-end">
-            <a href="bachelorbuddy.apk" download class="btn btn-outline text-white"
-             id="get-app-btn" >Get App <i class="fa fa-download"></i
+            <a
+              href="bachelorbuddy.apk"
+              download
+              onclick="handleDownload()"
+              class="btn btn-outline text-white"
+              id="get-app-btn"
+              >Get App <i class="fa fa-download"></i
             ></a>
           </div>
         </div>
       </header>
-        <hr id="hr"/>
-      <section class="flex flex-col  md:mx-10 justify-center items-center h-[80vh]">
-        <h1 class=" text-xl md:text-5xl my-8 font-bold relative z-999">Welcome to BachelorBuddy!</h1>
-        <p class=" mx-5 md:mx-40 text-center relative z-999">
-          BachelorBuddy is a great app for bachelors and managers to keep track
-          of meals and bazar. Download the app now and enjoy the convenience it
-          brings to your daily routine!
-        </p>
-
-        <a class="my-8 btn relative z-999" href="bachelorbuddy.apk" id="downloadButton" download
-          >Download BachelorBuddy App <i class="fa fa-download"></i></a
+      <hr id="hr" />
+      <div
+        class="bg-white bg-opacity-20 md:bg-opacity-30 rounded-3xl p-4 mt-4 w-2/3 mx-auto z-999 relative"
+      >
+        <section
+          class="z-999 flex flex-col md:mx-10 justify-center items-center h-[80vh]"
         >
-        <div class="flex flex-col justify-center items-center relative z-999">
-          <img class="w-40 mb-5 border-2" src="./images/qr.png" alt="">
-          <p>Scan to download in your phone</p>
-          <p>OR</p>
-          <p>Click on the download button</p>
-        </div>
-      </section>
+          <h1
+            class="text-xl text-center md:text-5xl my-4 font-bold relative z-999"
+          >
+            Welcome to BachelorBuddy!
+          </h1>
+          <p class="mx-5 md:mx-30 text-center text-lg relative z-999">
+            BachelorBuddy is a great app for bachelors and managers to keep
+            track of meals and bazar. Download the app now and enjoy the
+            convenience it brings to your daily routine!
+          </p>
+          <p class="text-gray-400 mt-4 bg-black p-4 rounded-lg">
+            <span id="downloads-amount">0</span>+ Downloads
+          </p>
+          <a
+            class="my-4 btn relative z-999"
+            href="bachelorbuddy.apk"
+            id="downloadButton"
+            onclick="handleDownload()"
+            download
+            >Download BachelorBuddy App <i class="fa fa-download"></i
+          ></a>
+          <div class="flex flex-col justify-center items-center relative z-999">
+            <img class="w-40 mb-5 border-2" src="./images/qr.png" alt="" />
+            <p>Scan to download in your phone</p>
+            <p>OR</p>
+            <p>Click on the download button</p>
+          </div>
+        </section>
+      </div>
     </div>
-    
+
     <script>
+      async function handleDownload() {
+        let value = await fetch("https://bachelor-buddy.vercel.app/downloads", {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify()
+        });
+      }
+
+      async function fetchCount() {
+        let value = await fetch("https://bachelor-buddy.vercel.app/downloads")
+          .then((res) => res.json())
+          .then((data) => {
+            document.getElementById("downloads-amount").innerHTML = data.count;
+          });
+      }
+
       var particles = [
         "confetti",
         "snow",
