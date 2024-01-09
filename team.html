@@ -24,9 +24,6 @@
       referrerpolicy="no-referrer"
     ></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-fountain@3/tsparticles.preset.fountain.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-snow@3/tsparticles.preset.snow.bundle.min.js"></script>
-
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="stylesheet" href="style.css" />
@@ -34,7 +31,7 @@
   <body>
     <div id="tsparticles"></div>
     <div class="wrapper bg-black min-h-screen md:h-[80vh] text-white">
-      <header class="z-100">
+      <header class="z-100 text-white">
         <div class="navbar bg-black text-white">
           <div class="navbar-start">
             <div class="dropdown">
@@ -58,11 +55,16 @@
                 tabindex="0"
                 class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 bg-black"
               >
-                <li ><a href="./index.html">Home</a></li>
+                <li><a href="./index.html">Home</a></li>
                 <li class="active"><a href="/">Team</a></li>
               </ul>
             </div>
-            <a class="btn btn-ghost text-xl"> BachelorBuddy</a>
+            <a
+              id="page-name"
+              class="btn btn-ghost text-xl text-white bg-transparent z-100"
+            >
+              BachelorBuddy</a
+            >
           </div>
           <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
@@ -71,16 +73,24 @@
             </ul>
           </div>
           <div class="navbar-end">
-            <a class="btn btn-outline text-white"
-             href="bachelorbuddy.apk" download >Get App <i class="fa fa-download"></i
+            <a
+              id="get-app-btn"
+              class="btn btn-outline text-white"
+              href="bachelorbuddy.apk"
+              download
+              >Get App <i class="fa fa-download"></i
             ></a>
           </div>
         </div>
       </header>
-      <hr />
-      <section class="flex my-10 flex-col min-h-[80vh] mx-10 justify-center items-center">
-        <div class="flex  gap-10 justify-center items-center md:gap-20 flex-wrap">
-        <!-- Member -->
+      <hr id="hr" />
+      <section
+        class="flex my-10 flex-col min-h-[80vh] mx-10 justify-center items-center"
+      >
+        <div
+          class="flex gap-10 justify-center items-center md:gap-20 flex-wrap"
+        >
+          <!-- Member -->
           <div class="flex flex-col justify-center items-center">
             <div class="avatar">
               <div
@@ -91,58 +101,85 @@
                 />
               </div>
             </div>
-            <p class="text-white text-center text-2xl mt-4">Md Junayed</p>
+            <p class="text-white text-center text-2xl mt-4" id="member-name">
+              Md Junayed
+            </p>
           </div>
-        <!-- Member -->
+          <!-- Member -->
           <div class="flex flex-col justify-center items-center">
             <div class="avatar">
               <div
                 class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"
               >
-                <img
-                  src="./images/sabbir.png"
-                />
+                <img src="./images/sabbir.png" />
               </div>
             </div>
-            <p class="text-white text-center text-2xl mt-4">Md. Sabbir Ahammed</p>
+            <p id="member-name" class="text-white text-center text-2xl mt-4">
+              Md. Sabbir Ahammed
+            </p>
           </div>
-        <!-- Member -->
+          <!-- Member -->
           <div class="flex flex-col justify-center items-center">
             <div class="avatar">
               <div
                 class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"
               >
-                <img
-                  src="./images/shanto.png"
-                />
+                <img src="./images/shanto.png" />
               </div>
             </div>
-            <p class="text-white text-center text-2xl mt-4">Nur Hasnat Shanto</p>
+            <p class="text-white text-center text-2xl mt-4" id="member-name">
+              Nur Hasnat Shanto
+            </p>
           </div>
-        <!-- Member -->
+          <!-- Member -->
           <div class="flex flex-col justify-center items-center">
             <div class="avatar">
               <div
                 class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"
               >
-                <img
-                  src="./images/rahima.png"
-                />
+                <img src="./images/rahima.png" />
               </div>
             </div>
-            <p class="text-white text-center text-2xl mt-4">Rahima Bagum</p>
+            <p class="text-white text-center text-2xl mt-4" id="member-name">
+              Rahima Bagum
+            </p>
           </div>
         </div>
       </section>
     </div>
-    <script>
-      tsParticles.load({
-        id: "tsparticles",
 
-        options: {
-          preset: "snow",
-        },
-      });
+    <script>
+      var particles = [
+        "confetti",
+        "snow",
+        "bubbles",
+        "fire",
+        "fireworks",
+        "hyperspace",
+        "links",
+        "squares",
+        "stars",
+        "triangles",
+      ];
+      var randomInt = Math.floor(Math.random() * particles.length);
+      var selectedParticle = particles[randomInt];
+
+      console.log(selectedParticle);
+
+      var additionalScript = document.createElement("script");
+      additionalScript.src = `https://cdn.jsdelivr.net/npm/@tsparticles/preset-${selectedParticle}@3/tsparticles.preset.${selectedParticle}.bundle.min.js`;
+
+      additionalScript.onload = function () {
+        tsParticles.load({
+          id: "tsparticles",
+
+          options: {
+            preset: selectedParticle,
+          },
+        });
+      };
+
+      document.head.appendChild(additionalScript);
     </script>
   </body>
 </html>

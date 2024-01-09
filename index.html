@@ -24,9 +24,6 @@
       referrerpolicy="no-referrer"
     ></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-fountain@3/tsparticles.preset.fountain.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-snow@3/tsparticles.preset.snow.bundle.min.js"></script>
-
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="stylesheet" href="style.css" />
@@ -62,7 +59,7 @@
                 <li><a href="./team.html">Team</a></li>
               </ul>
             </div>
-            <a class="btn btn-ghost text-xl">BachelorBuddy</a>
+            <a class="btn btn-ghost text-xl" id="page-name">BachelorBuddy</a>
           </div>
           <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
@@ -72,24 +69,24 @@
           </div>
           <div class="navbar-end">
             <a href="bachelorbuddy.apk" download class="btn btn-outline text-white"
-              >Get App <i class="fa fa-download"></i
+             id="get-app-btn" >Get App <i class="fa fa-download"></i
             ></a>
           </div>
         </div>
       </header>
-        <hr />
+        <hr id="hr"/>
       <section class="flex flex-col  md:mx-10 justify-center items-center h-[80vh]">
-        <h1 class=" text-xl md:text-5xl my-8 font-bold">Welcome to BachelorBuddy!</h1>
-        <p class=" mx-5 md:mx-40 text-center">
+        <h1 class=" text-xl md:text-5xl my-8 font-bold relative z-999">Welcome to BachelorBuddy!</h1>
+        <p class=" mx-5 md:mx-40 text-center relative z-999">
           BachelorBuddy is a great app for bachelors and managers to keep track
           of meals and bazar. Download the app now and enjoy the convenience it
           brings to your daily routine!
         </p>
 
-        <a class="my-8 btn" href="bachelorbuddy.apk" id="downloadButton" download
+        <a class="my-8 btn relative z-999" href="bachelorbuddy.apk" id="downloadButton" download
           >Download BachelorBuddy App <i class="fa fa-download"></i></a
         >
-        <div class="flex flex-col justify-center items-center">
+        <div class="flex flex-col justify-center items-center relative z-999">
           <img class="w-40 mb-5 border-2" src="./images/qr.png" alt="">
           <p>Scan to download in your phone</p>
           <p>OR</p>
@@ -97,14 +94,38 @@
         </div>
       </section>
     </div>
+    
     <script>
-      tsParticles.load({
-        id: "tsparticles",
+      var particles = [
+        "confetti",
+        "snow",
+        "bubbles",
+        "fire",
+        "fireworks",
+        "hyperspace",
+        "links",
+        "stars",
+        "triangles",
+      ];
+      var randomInt = Math.floor(Math.random() * particles.length);
+      var selectedParticle = particles[randomInt];
 
-        options: {
-          preset: "snow",
-        },
-      });
+      console.log(selectedParticle);
+
+      var additionalScript = document.createElement("script");
+      additionalScript.src = `https://cdn.jsdelivr.net/npm/@tsparticles/preset-${selectedParticle}@3/tsparticles.preset.${selectedParticle}.bundle.min.js`;
+
+      additionalScript.onload = function () {
+        tsParticles.load({
+          id: "tsparticles",
+
+          options: {
+            preset: selectedParticle,
+          },
+        });
+      };
+
+      document.head.appendChild(additionalScript);
     </script>
   </body>
 </html>

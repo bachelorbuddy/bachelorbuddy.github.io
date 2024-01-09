@@ -1,7 +1,33 @@
 #tsparticles > canvas{
     background-color: transparent !important;
 }
+
+#tsparticles > img {
+    display: none !important;
+}
 .active{
     border-radius: 10px;
     border: 1px solid white !important;
+}
+#page-name{
+    color: white !important;
+    background-color: transparent !important;
+    z-index: 999 !important;
+}
+
+#hr{
+    position: relative;
+    z-index: 990;
+    color: white !important;
+    background-color: transparent !important;
+}
+#get-app-btn{
+    background-color: transparent !important;
+    z-index: 999;
+    color: white !important;
+    position: relative;
+}
+#member-name{
+    position: relative;
+    z-index: 999;
 }
