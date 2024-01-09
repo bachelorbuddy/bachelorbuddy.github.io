@@ -30,7 +30,7 @@
   </head>
   <body onload="fetchCount()">
     <div id="tsparticles"></div>
-    <div class="wrapper bg-black min-h-screen text-white">
+    <div class="wrapper bg-black pb-10 text-white">
       <header class="z-100">
         <div class="navbar bg-black text-white bg-black">
           <div class="navbar-start">
@@ -81,10 +81,10 @@
       </header>
       <hr id="hr" />
       <div
-        class="bg-white bg-opacity-50 md:bg-opacity-30 rounded-3xl p-4 mt-4 w-10/12 md:w-2/3 mx-auto z-999 relative"
+        class="bg-white bg-opacity-50 md:bg-opacity-30 rounded-3xl p-4 my-4 w-10/12 md:w-2/3 mx-auto z-999 relative"
       >
         <section
-          class="z-999 flex flex-col md:mx-10 justify-center items-center h-[80vh]"
+          class="z-999 flex flex-col md:mx-10 justify-center items-center"
         >
           <h1
             class="text-xl text-center md:text-5xl my-4 font-bold relative z-999"
@@ -141,11 +141,9 @@
         "snow",
         "bubbles",
         "fire",
-        "fireworks",
         "hyperspace",
         "links",
         "stars",
-        "triangles",
       ];
       var randomInt = Math.floor(Math.random() * particles.length);
       var selectedParticle = particles[randomInt];
